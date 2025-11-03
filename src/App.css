@@ -1,0 +1,136 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* Full background with overlay */
+body::before {
+  content: "";
+  position: fixed; /* fixed to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./aurabg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2; /* behind everything */
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7); /* overlay */
+  z-index: -1; /* between background and content */
+}
+
+.goal-form {
+  margin-bottom: 20px;
+}
+
+.goal-list {
+  display: flex;
+  flex-wrap: wrap;        /* allow boxes to move to next line */
+  justify-content: center;
+  gap: 10px;              /* 🔹 increased spacing between boxes */
+}
+
+/* Each goal “box” */
+.goal-bubble {
+  display: inline-block;  /* 🔹 size fits its text */
+  padding: 10px 14px;     /* 🔹 controls box size around text */
+  border-radius: 6px;     /* 🔹 slightly rounded corners (button-like) */
+  border: 1px solid rgba(189, 142, 179, 0.25); 
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* subtle depth */
+  transition: transform 0.1s ease-in-out;
+}
+
+
+.goal-bubble:hover {
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  display: none;              /* hidden by default */
+  margin-right: 5px;
+  border: none;
+  background: rgba(0, 0, 0, 0.15);
+  color: white;
+  font-size: 10px;
+  border-radius: 3px;         /* small rounded corners to match style */
+  cursor: pointer;
+}
+
+/* Show the delete button only when hovering over the bubble */
+.goal-bubble:hover .delete-btn {
+  display: inline-block;      /* becomes visible on hover */
+}
+
+/* Hover effect for the delete button itself */
+.delete-btn:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.dashboard {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dashboard-column {
+  background: rgba(255,255,255,0.8);
+  padding: 12px;
+  border-radius: 8px;
+  width: 300px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.dashboard-container {
+  display: flex;
+  gap: 1rem;
+  padding: 10px;
+}
+
+.column {
+  width: 200px;           /* fixed width */
+  min-height: 300px;      /* visible drop area */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  background: #f9f9f9;
+
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  gap: 8px;               /* space between goals */
+}
+
+.column h3 {
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+.goal-bubble {
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: grab;
+}
